@@ -1,0 +1,8 @@
+nvp_mnist.ipynb
+generate_grfs_test.ipynb
+.ipynb_checkpoints 
+nvp_flow_grfs_ae.ipynb         
+nvp_flow_grfs_ae_.ipynb
+figs/
+*.pth
+*.pdf
