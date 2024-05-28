@@ -6,4 +6,3 @@ nvp_flow_grfs_ae_.ipynb
 __pycache__/
 figs/
 *.pth
-*.pdf
