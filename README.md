@@ -1,5 +1,5 @@
 # Simulation-based inference with random fields in cosmology
-### Jed Homer (with help my Nils Schöneberg)
+### Jed Homer (with help by Nils Schöneberg)
 #### Chair of Astrophysics, Cosmology and Artificial Intelligence (ACAI),
 ##### Universiät Sternwarte München, LMU.
 
