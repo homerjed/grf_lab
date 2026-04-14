@@ -3,4 +3,6 @@
 #### Chair of Astrophysics, Cosmology and Artificial Intelligence (ACAI),
 ##### Universiät Sternwarte München, LMU.
 
+For the lab manual, see the lab_manual.pdf file!
+
 ![Alt text](cover.png?raw=true "Title")
