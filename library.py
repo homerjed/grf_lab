@@ -526,15 +526,18 @@ class CNNEnsemble(eqx.Module):
     def __init__(self, key, n_models=20, **kwargs):
         # Generate a unique key for each sub-model
         keys = jr.split(key, n_models)
-        # Create a list of independent SimpleCNN instances
-        self.networks = [SimpleCNN(k, **kwargs) for k in keys]
+        # Create a list of independent SimpleCNN instances, stamping them together!
+        self.networks = eqx.filter_vmap(lambda k: SimpleCNN(k, **kwargs))(keys)
 
     def __call__(self, x):
         # Get predictions from all models, take the average
-        preds = jnp.stack([net(x) for net in self.networks])
+        preds = eqx.filter_vmap(lambda net: net(x))(self.networks)
         return jnp.mean(preds, axis=0)
 
     def loss(self, x, y, key=None):
-        # x shape: (batch, h, w)
-        preds = jax.vmap(self.__call__)(x)
-        return jnp.mean(jnp.square(preds - y))
+        # x shape: (batch, h, w
+        def single_loss(net):
+          preds = jax.vmap(net)(x)
+          return jnp.mean(jnp.square(preds-y))
+        all_losses = eqx.filter_vmap(single_loss)(self.networks)
+        return jnp.mean(all_losses)
